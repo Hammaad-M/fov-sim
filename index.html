@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simulate Field of View in images on the web!">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FOV Simulator</title>
     <link
@@ -13,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap" rel="stylesheet">
   </head>
-  <body style="font-family: 'M PLUS 1', sans-serif;">
-    <div class="content text-center relative w-max m-auto">
+  <body style="font-family: 'M PLUS 1', sans-serif;" class="min-h-screen overflow-x-hidden">
+    <div class="content text-center relative w-max m-auto min-h-11/12">
       <div
         class="
           flex
@@ -98,7 +99,7 @@
       </div>
       <img src="demo.jpg" style="display: none" id="temp" alt="" />
     </div>
-    <p class="absolute bottom-2 left-2">Designed and Developed by <a class="cursor-pointer underline text-blue-500" href="https://www.hammaadmemon.com">Hammaad Memon</a></p>
+    <p class="relative mt-5 mb-1 ml-2">Designed and Developed by <a class="cursor-pointer underline text-blue-500" href="https://www.hammaadmemon.com">Hammaad Memon</a></p>
     <script src="app.js"></script>
   </body>
 </html>
