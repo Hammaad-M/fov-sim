@@ -73,7 +73,7 @@ function update() {
   inputCtx.strokeRect(...cropRect);
   outputCtx.drawImage(image, ...cropRect, 0, 0, width, height);
   outputCanvas.style.width = scaleFactor * 100 + "%";
-  // outputCanvasWrapper.style.height = image.height;
+  outputCanvas.style.marginTop = (img.height - height) / 2 + "px";
 }
 
 function resizeCanvas(width, height, canvas) {

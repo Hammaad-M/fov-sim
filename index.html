@@ -3,18 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Simulate Field of View in images on the web!">
+    <meta
+      name="description"
+      content="Simulate Field of View in images on the web!"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FOV Simulator</title>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body style="font-family: 'M PLUS 1', sans-serif;" class="min-h-screen overflow-x-hidden">
+  <body
+    style="font-family: 'M PLUS 1', sans-serif"
+    class="min-h-screen overflow-x-hidden"
+  >
     <div class="content text-center relative w-max m-auto min-h-11/12">
       <div
         class="
@@ -36,43 +45,58 @@
 
         <div class="w-1/2">
           <h2 class="mb-1 text-center text-lg font-bold">Modified</h2>
-          <div id="output-wrapper" class="w-full p-0 flex align-center justify-center my-2 h-auto">
+          <div
+            id="output-wrapper"
+            class="w-full p-0 flex align-center justify-center my-2 h-auto"
+          >
             <canvas class="rounded-sm" id="output-canvas"></canvas>
           </div>
         </div>
       </div>
       <div class="flex w-full">
-          <div class="flex grow ml-12">
-              <label for="input-angle">Input FOV angle: </label>
-            <input
-                type="text"
-                class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-                name="input-angle"
-                id="input-angle"
-                placeholder="30"
-            />
-          </div>
-          <div class="flex-grow ml-12">
-            <label for="output-angle">Output FOV angle: </label>
-            <input
-                type="text"
-                class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-                name="output-angle"
-                id="output-angle"
-                placeholder="20"
-            />
-          </div>
+        <div class="flex grow ml-12">
+          <label for="input-angle">Input FOV angle: </label>
+          <input
+            type="text"
+            class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            name="input-angle"
+            id="input-angle"
+            placeholder="30"
+          />
+        </div>
+        <div class="flex-grow ml-12">
+          <label for="output-angle">Output FOV angle: </label>
+          <input
+            type="text"
+            class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            name="output-angle"
+            id="output-angle"
+            placeholder="20"
+          />
+        </div>
       </div>
-      <p class="text-center w-auto mt-5"> FOV refers to Diagonal Field of View in Degrees </p>
-      <p class="text-center w-auto mt-3"> Right click on images above for saving options! </p>
-      <div class="relative w-max mt-5 m-auto grid grid-cols-1">
+      <p class="text-center w-auto mt-5">
+        FOV refers to Diagonal Field of View in Degrees
+      </p>
+      <p class="text-center w-auto mt-3">Right click on image to save!</p>
+      <div
+        class="
+          relative
+          w-auto
+          mt-5
+          m-auto
+          flex
+          gap-2
+          justify-center
+          align-center
+        "
+      >
         <button
           onclick="update()"
           class="
             rounded-full
             bg-gray-900
-            text-white 
-            text-center
+            text-white text-center
             w-max
             px-8
             my-3
@@ -82,24 +106,39 @@
         >
           Simulate FOV
         </button>
-
-        <label  class="
-            rounded-full
-            bg-gray-900
-            text-white 
-            text-center
-            w-auto
-            px-8
-            my-3
-            py-2
-            cursor-pointer
-        " for="image-upload">Load Image</span>
-        <input class="hidden" type="file" name="image-upload" id="image-upload" />
-    
+        <div class="w-max pt-3 flex align-center justify-center">
+          <label
+            class="
+              rounded-full
+              bg-gray-900
+              text-white text-center
+              w-auto
+              px-8
+              pt-1.5
+              h-10
+              cursor-pointer
+            "
+            for="image-upload"
+            >Load Image</label
+          >
+          <input
+            class="hidden"
+            type="file"
+            name="image-upload"
+            id="image-upload"
+          />
+        </div>
       </div>
       <img src="demo.jpg" style="display: none" id="temp" alt="" />
     </div>
-    <p class="relative mt-5 mb-1 ml-2">Designed and Developed by <a class="cursor-pointer underline text-blue-500" href="https://www.hammaadmemon.com">Hammaad Memon</a></p>
+    <p class="relative mt-5 mb-1 ml-2">
+      Designed and Developed by
+      <a
+        class="cursor-pointer underline text-blue-500"
+        href="https://www.hammaadmemon.com"
+        >Hammaad Memon</a
+      >
+    </p>
     <script src="app.js"></script>
   </body>
 </html>
