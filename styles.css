@@ -1,4 +1,10 @@
-
+body {
+    font-family: 'M PLUS 1', sans-serif;
+    min-height: 100vh;
+}
+.content {
+    min-height: 90vh;
+}
 .dropdown-content {
     display: none;
     position: absolute;

@@ -9,7 +9,6 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FOV Simulator</title>
-    <link rel="stylesheet" href="styles.css">
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -20,12 +19,12 @@
       href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body
-    style="font-family: 'M PLUS 1', sans-serif"
-    class="min-h-screen overflow-x-hidden"
+    class="overflow-x-hidden"
   >
-    <div class="content text-center relative w-max m-auto min-h-11/12">
+    <div class="content text-center relative w-max m-auto">
       <div
         class="
           flex
@@ -40,12 +39,12 @@
         "
       >
         <div class="w-1/2">
-          <h2 class="mb-1 text-center text-lg font-bold">Original</h2>
+          <h2 class="mb-1 text-center text-lg font-bold">Input</h2>
           <canvas class="my-2 rounded-sm w-full" id="input-canvas"></canvas>
         </div>
 
         <div class="w-1/2">
-          <h2 class="mb-1 text-center text-lg font-bold">Modified</h2>
+          <h2 class="mb-1 text-center text-lg font-bold">Simulation</h2>
           <div
             id="output-wrapper"
             class="w-full p-0 flex align-center justify-center my-2 h-auto"
@@ -70,7 +69,7 @@
             placeholder="30"
           />
         </div>
-        <div class="flex ml-12">
+        <div class="flex ml-8">
           <label id="output-label" for="output-angle">Output FOV angle: </label>
           <input
             type="text"
@@ -85,16 +84,6 @@
             placeholder="20"
           />
         </div>
-      </div>
-
-      <div class="flex justify-center align-center px-1 py-0.5 relative w-max m-auto">
-        <div class="dropdown relative ml-10 mt-2 w-max">
-          <button class="bg-gray-900 text-white rounded-sm px-4 py-2" id="fov-mode">FOV mode: diagonal</button>
-          <div class="dropdown-content w-full">
-            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
-          </div>
-        </div>
-        <p style="height: min-content;" class="my-auto flex-shrink float-right text-center py-0 w-max ml-10">Right click on image to save!</p>
       </div>
       
       <div
@@ -148,6 +137,15 @@
             id="image-upload"
           />
         </div>
+      </div>
+      <div class="flex justify-center align-center px-1 py-0.5 relative w-max m-auto">
+        <div class="dropdown relative ml-10 mt-2 w-max">
+          <button class="bg-gray-900 text-white rounded-sm px-4 py-2" id="fov-mode">FOV mode: diagonal</button>
+          <div class="dropdown-content w-full">
+            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
+          </div>
+        </div>
+        <p style="height: min-content;" class="my-auto flex-shrink float-right text-center py-0 w-max ml-10">Right click on image to save!</p>
       </div>
       <img src="demo.jpg" style="display: none" id="temp" alt="" />
     </div>

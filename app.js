@@ -20,7 +20,14 @@ const validateInput = (input, fallback) => {
     result = parseInt(input);
   }
   if (isNaN(result)) {
-    throw new Error();
+    const msg = "Invalid Values!";
+    alert(msg);
+    throw new Error(msg);
+  }
+  if (result >= 180) {
+    const msg = "Angles must be less than 180!";
+    alert(msg);
+    throw new Error(msg);
   }
   return result;
 }
@@ -36,13 +43,17 @@ function getInputs() {
     }
   } catch (err) {
     console.error(err)
-    alert("Invalid Values!");
     if (useDiagonalFOV) {
       inputAngle = 30;
       outputAngle = 20;
+      inputFOVs[0].value = "";
+      outputFOVs[0].value = "";
     } else {
       inputAngle = [30, 30];
       outputAngle = [20, 20];
+      const reset = (e) => e.value = "";
+      inputFOVs.forEach(reset);
+      outputFOVs.forEach(reset);
     }
   }
   return [inputAngle, outputAngle];
@@ -70,7 +81,7 @@ function getNewImageSize(inputAngle, outputAngle) {
     const scaleFactor = outputTan / inputTan;
     return [image.width * scaleFactor, image.height * scaleFactor, scaleFactor];
   } 
-  // Method 1
+  
   const inputTan = [
     Math.tan(toRadians(inputAngle[0] / 2)), 
     Math.tan(toRadians(inputAngle[1] / 2))
@@ -83,13 +94,13 @@ function getNewImageSize(inputAngle, outputAngle) {
   const width = (image.width * outputTan[0]) / (2 * inputTan[0]);
   const height = (image.height * outputTan[1]) / (2 * inputTan[1]);
 
-  //    Purcell method
+  //    PURCELL
   // const distanceX = (image.width / 2) / (inputTan[0] * 2)
   // const width = (distanceX * outputTan[0]) * 2;
   // const distanceY = (image.height / 2) / (inputTan[1] * 2);
   // const height = (distanceY * outputTan[1]) * 2;
 
-  console.log("Results: ", width, height, image.width, image.height);
+  console.log("[RESULTS]\nnew width: ", width, "\nnew height: ", height, "\noriginal width: ", image.width, "\noriginal height: ", image.height);
 
   return [width * 2, height * 2, null];
 
@@ -100,12 +111,12 @@ function update() {
   // validate angles
   if (useDiagonalFOV) {
     if (inputAngle < outputAngle) {
-      alert("Input angle must be less than output angle!");
+      alert("Output Angle must be less than input angle!");
       return;
     }
   } else {
     if (inputAngle[0] < outputAngle[0] || inputAngle[1] < outputAngle[1]) {
-      alert("Input angle must be less than output angle!");
+      alert("Output Angle must be less than input angle!");
       return;
     }
   }
