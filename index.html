@@ -9,6 +9,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FOV Simulator</title>
+    <link rel="stylesheet" href="styles.css">
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -34,7 +35,7 @@
           justify-center
           px-2
           py-1
-          gap-1
+          gap-x-1
           mb-3
         "
       >
@@ -53,37 +54,54 @@
           </div>
         </div>
       </div>
-      <div class="flex w-full">
-        <div class="flex grow ml-12">
-          <label for="input-angle">Input FOV angle: </label>
+      <div class="flex w-full w-max m-auto relative">
+        <div class="flex">
+          <label id="input-label" for="input-angle">Input FOV angle: </label>
           <input
             type="text"
-            class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            class="input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
             name="input-angle"
-            id="input-angle"
+            placeholder="30"
+          />
+          <input
+            type="text"
+            class="hidden inline-block input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            name="input-angle"
             placeholder="30"
           />
         </div>
-        <div class="flex-grow ml-12">
-          <label for="output-angle">Output FOV angle: </label>
+        <div class="flex ml-12">
+          <label id="output-label" for="output-angle">Output FOV angle: </label>
           <input
             type="text"
-            class="border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            class="ml-2 output-angle -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
             name="output-angle"
-            id="output-angle"
+            placeholder="20"
+          />
+          <input
+            type="text"
+            class="ml-2 hidden output-angle -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+            name="output-angle"
             placeholder="20"
           />
         </div>
       </div>
-      <p class="text-center w-auto mt-5">
-        FOV refers to Diagonal Field of View in Degrees
-      </p>
-      <p class="text-center w-auto mt-3">Right click on image to save!</p>
+
+      <div class="flex justify-center align-center px-1 py-0.5 relative w-max m-auto">
+        <div class="dropdown relative ml-10 mt-2 w-max">
+          <button class="bg-gray-900 text-white rounded-sm px-4 py-2" id="fov-mode">FOV mode: diagonal</button>
+          <div class="dropdown-content w-full">
+            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
+          </div>
+        </div>
+        <p style="height: min-content;" class="my-auto flex-shrink float-right text-center py-0 w-max ml-10">Right click on image to save!</p>
+      </div>
+      
       <div
         class="
           relative
           w-auto
-          mt-5
+          mt-2
           m-auto
           flex
           gap-2
@@ -110,8 +128,10 @@
           <label
             class="
               rounded-full
-              bg-gray-900
-              text-white text-center
+              bg-white
+              border-2
+              border-black
+              text-black text-center
               w-auto
               px-8
               pt-1.5
