@@ -59,6 +59,11 @@ function getInputs() {
   return [inputAngle, outputAngle];
 }
 
+function saveImage() {
+  outputCanvas.toBlob(blob => {
+    saveAs(blob, "simulated-fov.png");
+  });
+}
 function readImage() {
   if (!this.files || !this.files[0]) return;
   const FR = new FileReader();
