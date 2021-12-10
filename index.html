@@ -25,6 +25,7 @@
     class="overflow-x-hidden"
   >
     <div class="content text-center relative w-max m-auto">
+      <h1 class="font-black text-xl tracking-wider mb-3">Camera Field of View (FOV) Simulator</h1>
       <div
         class="
           flex
@@ -53,23 +54,35 @@
           </div>
         </div>
       </div>
-      <div class="flex w-full w-max m-auto relative">
-        <div class="flex">
-          <label id="input-label" for="input-angle">Input FOV angle: </label>
-          <input
-            type="text"
-            class="input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-            name="input-angle"
-            placeholder="30"
-          />
-          <input
-            type="text"
-            class="hidden inline-block input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-            name="input-angle"
-            placeholder="30"
-          />
+
+      <div class="flex justify-center align-center px-1 py-0.5 relative w-min m-auto mb-6">
+        <div class="dropdown relative w-max">
+          <button class="bg-gray-900 text-white rounded-full px-5 py-2" id="fov-mode">FOV mode: diagonal</button>
+          <div class="dropdown-content w-full">
+            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
+          </div>
         </div>
-        <div class="flex ml-8">
+      </div>
+
+      <div class="flex w-max m-auto relative">
+        <div class="flex mr-2">
+          <label id="input-label" for="input-angle">Input FOV angle: </label>
+          <div class="flex w-min">
+            <input
+              type="text"
+              class="input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+              name="input-angle"
+              placeholder="30"
+            />
+            <input
+              type="text"
+              class="hidden inline-block input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+              name="input-angle"
+              placeholder="30"
+            />
+          </div>
+        </div>
+        <div class="flex ml-2">
           <label id="output-label" for="output-angle">Output FOV angle: </label>
           <input
             type="text"
@@ -138,15 +151,7 @@
           />
         </div>
       </div>
-      <div class="flex justify-center align-center px-1 py-0.5 relative w-max m-auto">
-        <div class="dropdown relative ml-10 mt-2 w-max">
-          <button class="bg-gray-900 text-white rounded-sm px-4 py-2" id="fov-mode">FOV mode: diagonal</button>
-          <div class="dropdown-content w-full">
-            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
-          </div>
-        </div>
-        <p style="height: min-content;" class="my-auto flex-shrink float-right text-center py-0 w-max ml-10">Right click on image to save!</p>
-      </div>
+      <p style="height: min-content;" class="m-auto flex-shrink text-center py-0 w-max">Right click on image to save!</p>
       <img src="demo.jpg" style="display: none" id="temp" alt="" />
     </div>
     <p class="relative mt-5 mb-1 ml-2">
