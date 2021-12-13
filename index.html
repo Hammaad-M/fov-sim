@@ -9,6 +9,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FOV Simulator</title>
+
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
@@ -19,12 +20,14 @@
       href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body
-    class="overflow-x-hidden"
+    class="overflow-x-hidden bg-gradient-to-r from-gray-300 to-white"
   >
     <div class="content text-center relative w-max m-auto">
+      <h1 class="font-black text-2xl tracking-wider mb-7 mt-3">Camera Field of View (FOV) Simulator</h1>
       <div
         class="
           flex
@@ -53,23 +56,35 @@
           </div>
         </div>
       </div>
-      <div class="flex w-full w-max m-auto relative">
-        <div class="flex">
-          <label id="input-label" for="input-angle">Input FOV angle: </label>
-          <input
-            type="text"
-            class="input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-            name="input-angle"
-            placeholder="30"
-          />
-          <input
-            type="text"
-            class="hidden inline-block input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
-            name="input-angle"
-            placeholder="30"
-          />
+
+      <div class="flex justify-center align-center px-1 py-0.5 relative w-min m-auto mb-6">
+        <div class="dropdown relative w-max">
+          <button class="bg-gray-900 text-white rounded-full px-5 py-2" id="fov-mode">FOV mode: diagonal</button>
+          <div class="dropdown-content w-full">
+            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
+          </div>
         </div>
-        <div class="flex ml-8">
+      </div>
+
+      <div class="flex w-max m-auto relative">
+        <div class="flex mr-2">
+          <label id="input-label" for="input-angle">Input FOV angle: </label>
+          <div class="flex w-min">
+            <input
+              type="text"
+              class="input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+              name="input-angle"
+              placeholder="30"
+            />
+            <input
+              type="text"
+              class="hidden inline-block input-angle ml-2 -mt-0.5 border-2 w-20 rounded-full px-2 py-0.5 border-gray-900"
+              name="input-angle"
+              placeholder="30"
+            />
+          </div>
+        </div>
+        <div class="flex ml-2">
           <label id="output-label" for="output-angle">Output FOV angle: </label>
           <input
             type="text"
@@ -98,22 +113,7 @@
           align-center
         "
       >
-        <button
-          onclick="update()"
-          class="
-            rounded-full
-            bg-gray-900
-            text-white text-center
-            w-max
-            px-8
-            my-3
-            py-2
-            cursor-pointer
-          "
-        >
-          Simulate FOV
-        </button>
-        <div class="w-max pt-3 flex align-center justify-center">
+        <div class="w-max pt-3 flex align-center gap-x-3 justify-center">
           <label
             class="
               rounded-full
@@ -126,6 +126,8 @@
               pt-1.5
               h-10
               cursor-pointer
+              hover:border-double
+              transition
             "
             for="image-upload"
             >Load Image</label
@@ -136,16 +138,40 @@
             name="image-upload"
             id="image-upload"
           />
+          <button
+            onclick="update()"
+            class="
+              rounded-full
+              bg-gray-900
+              text-white text-center
+              w-max
+              px-8
+              py-2
+              cursor-pointer
+              hover:border-2
+              hover:border-white
+              hover
+            "
+        >
+          Simulate FOV
+        </button>
+        <button
+            class="
+              rounded-full
+              bg-white
+              border-2
+              border-black
+              text-black text-center
+              w-auto
+              px-8
+              h-10
+              cursor-pointer
+              transition
+              hover:border-double
+            "
+            onclick="saveImage()"
+            >Save Image</button>
         </div>
-      </div>
-      <div class="flex justify-center align-center px-1 py-0.5 relative w-max m-auto">
-        <div class="dropdown relative ml-10 mt-2 w-max">
-          <button class="bg-gray-900 text-white rounded-sm px-4 py-2" id="fov-mode">FOV mode: diagonal</button>
-          <div class="dropdown-content w-full">
-            <button class="rounded-sm w-full" id="fov-option" onclick="toggleFOVMode()">Horizontal & Vertical FOV</button>
-          </div>
-        </div>
-        <p style="height: min-content;" class="my-auto flex-shrink float-right text-center py-0 w-max ml-10">Right click on image to save!</p>
       </div>
       <img src="demo.jpg" style="display: none" id="temp" alt="" />
     </div>
@@ -157,6 +183,7 @@
         >Hammaad Memon</a
       >
     </p>
+    <script src="filesaver.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
